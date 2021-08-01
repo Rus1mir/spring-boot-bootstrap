@@ -5,6 +5,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import web.model.User;
 import web.service.UserService;
 
@@ -19,9 +20,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/")
-    public String showAllUsers(ModelMap model, @AuthenticationPrincipal User user) {
-        model.addAttribute("currentUser", user);
+    @GetMapping("/user")
+    public String showAllUsers() {
         return "users";
     }
 }

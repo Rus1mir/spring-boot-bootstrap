@@ -24,8 +24,7 @@ public class AdminController {
     }
 
     @GetMapping("/")
-    public String showAllUsers(ModelMap model, @AuthenticationPrincipal User user) {
-        model.addAttribute("currentUser", user);
+    public String showAllUsers(ModelMap model) {
         model.addAttribute("listUsers", userService.findAll());
         model.addAttribute("allRoles", roleService.findAll());
         return "users";

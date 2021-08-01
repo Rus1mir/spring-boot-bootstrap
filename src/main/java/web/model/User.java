@@ -21,9 +21,6 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Transient
-    private String confirmPass;
-
     @Column(name = "name")
     private String name;
 
@@ -31,17 +28,16 @@ public class User implements UserDetails {
     private String surname;
 
     @Column(name = "age")
-    private Integer age;
+    private Byte age;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public User(String email, String password, String confirmPass, String name, String surname, Integer age, Set<Role> roles) {
+    public User(String email, String password, String name, String surname, Byte age, Set<Role> roles) {
         this.email = email;
         this.password = password;
-        this.confirmPass = confirmPass;
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -80,14 +76,6 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public String getConfirmPass() {
-        return confirmPass;
-    }
-
-    public void setConfirmPass(String confirmPass) {
-        this.confirmPass = confirmPass;
-    }
-
     public String getName() {
         return name;
     }
@@ -104,11 +92,11 @@ public class User implements UserDetails {
         this.surname = surname;
     }
 
-    public Integer getAge() {
+    public Byte getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Byte age) {
         this.age = age;
     }
 
